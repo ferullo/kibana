@@ -29,7 +29,7 @@ import { getServices } from '../../../../kibana_services';
 
 function getMapsAppBaseUrl() {
   const mapsAppVisAlias = getServices()
-    .visualizations.types.getAliases()
+    .visualizations.getAliases()
     .find(({ name }) => {
       return name === 'maps';
     });
@@ -38,7 +38,7 @@ function getMapsAppBaseUrl() {
 
 export function isMapsAppRegistered() {
   return getServices()
-    .visualizations.types.getAliases()
+    .visualizations.getAliases()
     .some(({ name }) => {
       return name === 'maps';
     });
@@ -84,6 +84,7 @@ export function getMapsAppUrl(
 
   // create initial layer descriptor
   const hasColumns = columns && columns.length && columns[0] !== '_source';
+  const supportsClustering = field.aggregatable;
   mapAppParams.set(
     'initialLayers',
     // @ts-ignore
@@ -97,9 +98,10 @@ export function getMapsAppUrl(
           geoField: field.name,
           tooltipProperties: hasColumns ? columns : [],
           indexPatternId: indexPattern.id,
+          scalingType: supportsClustering ? 'CLUSTERS' : 'LIMIT',
         },
         visible: true,
-        type: 'VECTOR',
+        type: supportsClustering ? 'BLENDED_VECTOR' : 'VECTOR',
       },
     ])
   );
