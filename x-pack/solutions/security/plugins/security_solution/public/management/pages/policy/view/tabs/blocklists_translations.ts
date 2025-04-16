@@ -114,7 +114,7 @@ export const POLICY_ARTIFACT_BLOCKLISTS_LABELS = Object.freeze({
     ),
   emptyUnexistingTitle: i18n.translate(
     'xpack.securitySolution.endpoint.policy.blocklist.empty.unexisting.title',
-    { defaultMessage: 'No blocklists entries exist' }
+    { defaultMessage: 'No blocklist entries exist' }
   ),
   emptyUnexistingMessage: i18n.translate(
     'xpack.securitySolution.endpoint.policy.blocklist.empty.unexisting.content',

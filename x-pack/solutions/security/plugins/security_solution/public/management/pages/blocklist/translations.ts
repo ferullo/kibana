@@ -105,7 +105,7 @@ export const CONDITION_FIELD_DESCRIPTION: { [K in BlocklistConditionEntryField]:
   'file.path.caseless': i18n.translate(
     'xpack.securitySolution.blocklist.entry.field.description.path.caseless',
     {
-      defaultMessage: 'The full path of the application (case insenstive)',
+      defaultMessage: 'The full path of the application (case insensitive)',
     }
   ),
   'file.Ext.code_signature': i18n.translate(
